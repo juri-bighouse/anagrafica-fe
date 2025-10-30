@@ -1,0 +1,51 @@
+image: node:18
+
+stages:
+  - install
+  - build
+  - test
+  - deploy
+
+cache:
+  key: ${CI_PROJECT_NAME}
+  paths:
+    - node_modules/
+
+# INSTALLAZIONE
+install_frontend:
+  stage: install
+  script:
+    - echo "📦 Installazione dipendenze frontend..."
+    - npm ci
+    - echo "✅ Installazione completata."
+
+# BUILD
+build_frontend:
+  stage: build
+  script:
+    - echo "🚧 Compilazione frontend con Vite..."
+    - npm run build
+    - echo "✅ Build completata."
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+
+# TEST
+test_frontend:
+  stage: test
+  script:
+    - echo "🧪 Simulazione test unitari frontend..."
+    - echo "✅ Tutti i test simulati superati."
+  allow_failure: true
+
+# DEPLOY
+deploy_frontend:
+  stage: deploy
+  script:
+    - echo "🚀 Simulazione deploy frontend..."
+    - echo "Copia di dist/ su server statico (simulato)."
+    - ls -lh dist/
+  when: manual
+  only:
+    - main
