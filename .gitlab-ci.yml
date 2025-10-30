@@ -15,7 +15,7 @@ cache:
 install_frontend:
   stage: install
   script:
-    - echo "📦 Installazione dipendenze frontend..."
+    - echo "Installazione dipendenze frontend..."
     - npm ci
     - echo "✅ Installazione completata."
 
@@ -23,7 +23,7 @@ install_frontend:
 build_frontend:
   stage: build
   script:
-    - echo "🚧 Compilazione frontend con Vite..."
+    - echo "Compilazione frontend con Vite..."
     - npm run build
     - echo "✅ Build completata."
   artifacts:
@@ -35,7 +35,7 @@ build_frontend:
 test_frontend:
   stage: test
   script:
-    - echo "🧪 Simulazione test unitari frontend..."
+    - echo "Simulazione test unitari frontend..."
     - echo "✅ Tutti i test simulati superati."
   allow_failure: true
 
@@ -43,7 +43,7 @@ test_frontend:
 deploy_frontend:
   stage: deploy
   script:
-    - echo "🚀 Simulazione deploy frontend..."
+    - echo "Simulazione deploy frontend..."
     - echo "Copia di dist/ su server statico (simulato)."
     - ls -lh dist/
   when: manual
